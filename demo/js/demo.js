@@ -43,4 +43,16 @@ $(function() {
 			console.log(item)
 		}
 	});
+
+	$('.template-states').typeahead({
+		source: states,
+		matchProp: 'full_name',
+		sortProp: 'abbrev',
+		template: '<h3><%= abbrev %></h3><%= matchProp %>', //Note that matchProp is a magic element which automatically maps to the specified matchProp
+		itemSelected: function(item, val, text) {
+			$('.selected-message').html('You selected the state ' + text + ' with ID ' + val + '<br />View your browser console for the full item element.')
+								  .show();
+			console.log(item)
+		}
+	});
 })
