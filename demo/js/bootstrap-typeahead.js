@@ -39,9 +39,9 @@ function($) {
 
       var selectedSource = $.grep(this.source, function(item) {
         return item[_this.options.valueProp] == $selectedItem.attr('data-value')
-      })[0]
+      })[0] || $selectedItem.text()
 
-      this.$element.val(selectedSource[this.options.matchProp])
+      this.$element.val(selectedSource[this.options.matchProp] || selectedSource)
 
       this.options.itemSelected($selectedItem, $selectedItem.attr('data-value'), selectedSource[this.options.matchProp], selectedSource)
       return this.hide()
