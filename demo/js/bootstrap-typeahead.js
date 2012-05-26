@@ -178,8 +178,8 @@ function($) {
         i = $(_this.options.item).attr('data-value', item[_this.options.valueProp] || item)
         if (i) {
           var matchItem = $.extend({}, item);
-          matchItem[_this.options.valueProp] = _this.highlighter(item[_this.options.matchProp] || item) //store as a prop on the item
-          i.find('a').html(_this.renderTemplate(item)); 
+          matchItem[_this.options.matchProp] = _this.highlighter(item[_this.options.matchProp] || item) //store as a prop on the item
+          i.find('a').html(_this.renderTemplate(matchItem)); 
           return i[0]
         }
       })
