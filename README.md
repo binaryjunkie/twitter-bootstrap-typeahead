@@ -45,29 +45,36 @@ Description: The object property to match the query against.
 Default: *name*<br />
 Description: The object property to use when sorting the items.
 
+**template**<br />
+Default: *'<%= matchProp %>'*<br />
+Description: An html string for the list item. Object properties can be supplied in ERB-style tags, 
+and will be rendered from the source data passed in. matchProp is a magic property that converts to whatever the defined matchProp option is set to.<br />
+
 **itemSelected**<br />
-Default: *function (item, val, text) {}*<br />
+Default: *function (element, val, text, item) {}*<br />
 Description: The callback function that is invoked when an item is chosen.<br />
 
-+ item: the HTML element that was selected
++ element: the HTML element that was selected
 
 + val: value of the *valueProp* property
 
 + text: value of the *textProp* property
 
++ item: the source data object for the selected entry
+
 Sample Usage
 ------------
     var cities = [
-			{ID: 1, Name: 'Toronto'},
-			{ID: 2, Name: 'Montreal'},
-			{ID: 3, Name: 'New York'},
-			{ID: 4, Name: 'Buffalo'},
-			{ID: 5, Name: 'Boston'},
-			{ID: 6, Name: 'Columbus'},
-			{ID: 7, Name: 'Dallas'},
-			{ID: 8, Name: 'Vancouver'},
-			{ID: 9, Name: 'Seattle'},
-			{ID: 10, Name: 'Los Angeles'}
+			{ID: 1, Name: 'Toronto', Country: 'Canada'},
+			{ID: 2, Name: 'Montreal', Country: 'Canada'},
+			{ID: 3, Name: 'New York', Country: 'USA'},
+			{ID: 4, Name: 'Buffalo', Country: 'USA'},
+			{ID: 5, Name: 'Boston', Country: 'USA'},
+			{ID: 6, Name: 'Columbus', Country: 'USA'},
+			{ID: 7, Name: 'Dallas', Country: 'USA'},
+			{ID: 8, Name: 'Vancouver', Country: 'USA'},
+			{ID: 9, Name: 'Seattle', Country: 'USA'},
+			{ID: 10, Name: 'Los Angeles', Country: 'USA'}
 	    ]
 
 	$(function() {
@@ -76,8 +83,8 @@ Sample Usage
 			matchProp: 'Name',
 			sortProp: 'Name',
 			valueProp: 'ID',
-			itemSelected: function(item, val, text) {
-				alert('You selected the city ' + text + ' with ID ' + val)
+			itemSelected: function(element, val, text, item) {
+				alert('You selected the city ' + text + '('+ item.Country +') with ID ' + val + '')
 				console.log(item)
 			}
 		})
