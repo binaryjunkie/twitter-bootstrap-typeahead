@@ -26,7 +26,7 @@ $(function() {
 		matchProp: 'Name',
 		sortProp: 'Name',
 		valueProp: 'ID',
-		itemSelected: function(item, val, text) {
+		itemSelected: function(el, val, text, item) {
 			$('.selected-message').html('You selected the city ' + text + ' with ID ' + val + '<br />View your browser console for the full item element.')
 								  .show();
 			console.log(item)
@@ -37,7 +37,7 @@ $(function() {
 		source: states,
 		matchProp: 'full_name',
 		sortProp: 'abbrev',
-		itemSelected: function(item, val, text) {
+		itemSelected: function(el, val, text, item) {
 			$('.selected-message').html('You selected the state ' + text + ' with ID ' + val + '<br />View your browser console for the full item element.')
 								  .show();
 			console.log(item)
@@ -49,7 +49,7 @@ $(function() {
 		matchProp: 'full_name',
 		sortProp: 'abbrev',
 		template: '<h3><%= abbrev %></h3><%= matchProp %>', //Note that matchProp is a magic element which automatically maps to the specified matchProp
-		itemSelected: function(item, val, text) {
+		itemSelected: function(el, val, text, item) {
 			$('.selected-message').html('You selected the state ' + text + ' with ID ' + val + '<br />View your browser console for the full item element.')
 								  .show();
 			console.log(item)
